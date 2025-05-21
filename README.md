@@ -21,6 +21,7 @@ Langkah-langkah Implementasi
     ```
     docker-compose up -d
     ```
+    ![image](https://github.com/user-attachments/assets/c7b6c0f7-8a03-4775-a040-6761406499e6)
     Kafka berjalan di localhost:9092, dan Zookeeper di localhost:2181.
 2. Buat Topik Kafka
     ```
@@ -30,6 +31,7 @@ Langkah-langkah Implementasi
     kafka-topics --create --topic sensor-suhu-gudang --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
     kafka-topics --create --topic sensor-kelembaban-gudang --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
     ```
+    ![image](https://github.com/user-attachments/assets/668e368b-5c6b-4e2d-8299-117fb90aeade)
 3. Simulasikan Data Sensor (Producer Kafka)
     Jalankan dua skrip Python di container producer
     ```
@@ -38,13 +40,19 @@ Langkah-langkah Implementasi
     python producer_suhu.py
     python producer_kelembaban.py
     ```
-4. Konsumsi dan Olah Data dengan PySpark
+    ![Screenshot 2025-05-21 214412](https://github.com/user-attachments/assets/961787b2-0d99-475b-82f3-6c3ab8e3fb43)
+    ![Screenshot 2025-05-21 214425](https://github.com/user-attachments/assets/ff0551e8-d29b-446f-ae40-7ab467284c6d)
+5. Konsumsi dan Olah Data dengan PySpark
     Jalankan skrip pyspark_consumer.py di container spark
     ```
     docker exec -it spark bash
     pip install kafka-python
     spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 pyspark_consumer.py
     ```
+    ![Screenshot 2025-05-21 214242](https://github.com/user-attachments/assets/51772854-a845-43c7-951f-ccfbe37368ac)
+    ![Screenshot 2025-05-21 214334](https://github.com/user-attachments/assets/c6c53c05-a4d0-40f8-b99c-2ccee9b96639)
+
+
 
 Dengan sistem ini, perusahaan dapat mendeteksi secara real-time jika suatu gudang mengalami suhu tinggi, kelembaban tinggi, atau keduanya sekaligus. Hal ini sangat penting untuk menjaga kualitas penyimpanan barang sensitif dan mencegah kerugian logistik.
 
