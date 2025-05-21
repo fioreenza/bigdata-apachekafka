@@ -2,7 +2,7 @@
 
 Sistem ini memantau kondisi suhu dan kelembaban gudang secara real-time menggunakan:
 - Kafka untuk komunikasi data streaming
-- PySpark Structured Streaming untuk analisis real-time
+- PySpark untuk analisis real-time
 - Docker Compose untuk menjalankan Zookeeper, Kafka, Producer, dan Spark secara berurutan dan saling terhubung.
 
 Struktur foldernya sebagai berikut
