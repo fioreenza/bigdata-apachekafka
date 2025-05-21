@@ -6,13 +6,14 @@ Sistem ini memantau kondisi suhu dan kelembaban gudang secara real-time mengguna
 - Docker Compose untuk menjalankan Zookeeper, Kafka, Producer, dan Spark secara berurutan dan saling terhubung.
 
 Struktur foldernya sebagai berikut
-.
+```
 ├── docker-compose.yml
 ├── producer/
 │   ├── producer_suhu.py
 │   └── producer_kelembaban.py
 └── consumer/
     └── pyspark_consumer.py
+```
 
 File docker-compose.yml digunakan untuk menjalankan warehouse system monitoring berbasis Kafka dan Spark secara terintegrasi. Di dalamnya terdapat empat layanan utama: Zookeeper sebagai koordinator Kafka, Kafka sebagai message broker untuk menampung data sensor, Python Producer untuk mensimulasikan pengiriman data suhu dan kelembaban, serta Spark (dengan PySpark) sebagai konsumer yang memproses data secara real-time menggunakan Spark Streaming. Semua layanan berjalan dalam container yang saling terhubung, dan script producer serta consumer disimpan di folder lokal yang dipetakan ke direktori /app di dalam container. Kafka dijalankan menggunakan image confluentinc/cp-kafka:latest dalam mode klasik (dengan Zookeeper), sedangkan Spark menggunakan image bitnami/spark:3.5.0 dan dijalankan manual menggunakan spark-submit untuk memproses stream dari Kafka.
 
