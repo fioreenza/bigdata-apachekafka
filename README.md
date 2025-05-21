@@ -1,5 +1,7 @@
 # Warehouse Monitoring System with Kafka and PySpark
 
+Link github: https://github.com/fioreenza/bigdata-apachekafka
+
 Sistem ini memantau kondisi suhu dan kelembaban gudang secara real-time menggunakan:
 - Kafka untuk komunikasi data streaming
 - PySpark untuk analisis real-time
